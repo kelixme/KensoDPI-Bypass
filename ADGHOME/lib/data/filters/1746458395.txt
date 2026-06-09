@@ -1,0 +1,211 @@
+vk.*##.ads300-thumb
+vk.*##.ads600x200
+vk.*##.ads_600x200
+vk.*##.adsbyyottos
+vk.*##.trg-b-banner-block
+vk.*###ads_left
+vk.*###ads_left
+vk.*##.audio_subscribe_promo__content
+vk.*###apps_ads_wrap
+vk.*###ads_special_promo_wrap
+vk.*###apps_ads_wrap
+vk.*##._ads_promoted_post_data_w
+vk.*##.ads_ads_news_wrap
+vk.*##div#left_ads
+vk.*##.ads_ads_box
+vk.*##.ads_ads_news_wrap
+~vk.*##div[id^="vk_ads_"]
+vk.*#$##ads_left { position: absolute; top: -2500px; }
+vk.*#%#//scriptlet("set-constant", "noAds", "true")
+vk.*#%#//scriptlet("set-constant", "noAdsAtAll", "true")
+vk.*#%#//scriptlet("set-constant", "no_left_ads", "true")
+vk.*#%#//scriptlet("set-constant", "no_ads", "true")
+vk.*#%#//scriptlet("set-constant", "isNoAdsForce", "true")
+vk.*#%#//scriptlet("set-constant", "hide_ad", "true")
+vk.*#%#//scriptlet("set-constant", "ya_direct", "false")
+vk.*#%#//scriptlet("set-constant", "yaDirectAdActive", "false")
+||ad.mail.ru^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||ad.mail.ru/static/admanhtml/rbadman-html5.min.js^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||vk.*/al_video.php?act=ads_stat^$domain=important
+||vk.*/js/cmodules/web/ads_light.$script
+||vk.*/css/al/ads_light.$script
+||vk.*/dist/web/ads_light.$script
+||vk.*/dist/web/performance_observers.$script
+||vk.*/dist/web/jobs_devtools_notification.$script
+||ad.mail.ru/vp/*&duration=domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||stats.vk-portal.net^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||*.ms.vk.*^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||tns-counter.ru^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||mail.ru/k?$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||top-fwz1.mail.ru^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||mc.yandex.ru^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||an.yandex.ru^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||scorecardresearch.com^$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||vk.*/ads_rotate^$domain=important
+||https://vk.*/rtrg?$domain=vk.com|vk.ru|m.vk.com|m.vk.ru
+||vk.*/al_video.php?act=ads_stat
+vk.*###ads_left
+vk.*##.audio_subscribe_promo__content
+vk.*###apps_ads_wrap
+vk.*###ads_special_promo_wrap
+vk.*###apps_ads_wrap
+vk.*##._ads_promoted_post_data_w
+vk.*##.ads_ads_news_wrap
+vk.*##div#left_ads
+vk.*##.ads_ads_box
+vk.*##.ads_ads_news_wrap
+~vk.*##div[id^="vk_ads_"]
+vk.*#$##ads_left { position: absolute; top: -2500px; }
+||vk.*/al_feed.php?ads_section^
+@@://vk.*/ads$document,~third-party
+@@://vk.*/exchange$document
+@@||oauth.vk.ru$document
+@@||login.vk.*/?act=openapi$domain=220vk.ru
+@@||vk.*/vkpay
+@@||oauth.vk.*/authorize?
+@@api_url=http://api.vk.*/api.php
+@@api_url=https://api.vk.*/api.php
+||vk.*/errors.php^
+||vk.*/upload_fails.php^
+vk.*###system_msg
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.wall_marked_as_ads)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="wall_marked_as_ads"]']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='> div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_marked_as_ads']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_marked_as_ads']
+vk.*##.wall_wrap div[id^="post-"][-ext-has='div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_marked_as_ads']
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"]:has(div[class="wall_marked_as_ads"])
+vk.*##div[class^="feed_row "] > div[id^="feed_repost-"]:has(.wall_marked_as_ads)
+vk.*##.wall_marked_as_ads
+vk.*###page_wall_posts > div.post_marked_as_ads
+vk.*###page_wall_posts > div.post[data-ad-block-uid]
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.ui_actions_menu_item[href*="ad_info.php"])
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.ui_actions_menu_item[data-task-click="AdsLight/copy_marker_id"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(.ui_actions_menu_item[href*="ad_info.php"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(.ui_actions_menu_item[data-task-click="AdsLight/copy_marker_id"])
+vk.*#?##feed_rows > div[id^="feed_row "]:-abp-has(.ui_actions_menu_item[data-task-click="AdsLight/copy_marker_id"])
+vk.*###page_wall_posts > div[id^="post-"]:has(a[onclick*="ads_params"][onclick*="post_ad_data"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(a[onclick*="ads_params"][onclick*="post_ad_data"])
+vk.*###page_wall_posts > div[id^="post-"]:has(a[onclick*="adsite_"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(a[onclick*="adsite_"])
+vk.*###page_wall_posts > div[id^="post-"]:has(a[data-mt-video-hls*="mradx.net"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(a[data-mt-video-hls*="mradx.net"])
+vk.*###page_wall_posts > div[id^="post-"]:has(img[src^="https://r0.mradx.net"])
+vk.*#?##feed_rows > div[class="feed_row "]:has(img[src^="https://r0.mradx.net"])
+vk.*###page_wall_posts > div[id^="post-"].post_marked_as_ads
+vk.*#?##feed_rows > div[class="feed_row "].post_marked_as_ads
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.wall_authors_rec)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="wall_authors_rec"]']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='> div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_authors_rec']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_authors_rec']
+vk.*##.wall_wrap div[id^="post-"][-ext-has='div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_authors_rec']
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"]:has(div[class="wall_authors_rec"])
+vk.*##div[class^="feed_row "] > div[id^="feed_repost-"]:has(.wall_authors_rec)
+vk.*##.wall_authors_rec
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.wall_live_recommended)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="wall_live_recommended"]']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='> div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_live_recommended']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_live_recommended']
+vk.*##.wall_wrap div[id^="post-"][-ext-has='div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.wall_live_recommended']
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"]:has(div[class="wall_live_recommended"])
+vk.*##div[class^="feed_row "] > div[id^="feed_repost-"]:has(.wall_live_recommended)
+vk.*##.wall_live_recommended
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.ShortVideoFeedBlock)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="ShortVideoFeedBlock"]']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='> div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.ShortVideoFeedBlock']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='div._post_content > div.post_content > div.post_info > div.wall_text > div.ShortVideoFeedBlock']
+vk.*##.wall_wrap div[id^="post-"][-ext-has='div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.ShortVideoFeedBlock']
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"]:has(div[class="ShortVideoFeedBlock"])
+vk.*##div[class^="feed_row "] > div[id^="feed_repost-"]:has(.ShortVideoFeedBlock)
+vk.*##.ShortVideoFeedBlock
+vk.*###page_block.ShortVideoFeedBlock
+vk.*##.apps_feedRightAppsBlock_new_apps.apps_feedRightAppsBlock.page_block
+vk.*##.apps_feedRightAppsBlock_single_app.apps_feedRightAppsBlock.page_block
+vk.*##.apps_feedRightAppsBlock_collaborative_recommend_apps.apps_feedRightAppsBlock.page_block
+vk.*##.apps_feedRightAppsBlock__row
+vk.*##.apps_feedRightAppsBlock
+vk.*##.apps_feedRightAppsBlock_new_apps
+vk.*##.NewMiniAppsRightBlock__root
+vk.*##.RecommendedNarrativesBlock
+vk.*##.RecommendedNarrativesBlockBase
+m.vk.*##.feedAssistancePromoButtonInstallApp
+vk.*###feed_mini_apps_recomm
+vk.*##.MarketItemsPortlet
+vk.*###achievement_game
+vk.*###groups_filters_wrap > .page_block
+vk.*###groups_filters_wrap
+vk.*###feed_recommends
+vk.*##.feed_groups_recomm
+vk.*##.feed_friends_recomm
+vk.*###profile_friends_recomm
+vk.*###friends_right_blocks_root
+vk.*###group_recom_wrap
+vk.*##.GroupsRecommendationsBlock
+vk.*##.FriendsSuggestionsBlock
+vk.*###friends_possible_block
+vk.*###feed_friends_recomm:not(.similar_groups_block)
+vk.*###block_aliexpress-recommendations-carousel
+vk.*###recommended_narratives
+vk.*###feed_right_blocks_root
+vk.*###groups_list_right_blocks_root
+vk.*##[class^="ads_ad_"]
+vk.*##[class^="ads"]
+vk.*##.ads_ads_news_wrap
+vk.*##._ads_promoted_post_data_w
+vk.*##div#left_ads
+vk.*##div[data-ad-view]
+vk.*##div[data-ad]
+vk.*##div[ads_left]
+vk.*##.post[data-ad]
+vk.*##.post[data-ad-view]
+vk.*##div[id^="postadsite_"]
+vk.*###_ads_block_data_w
+vk.*###mailru-visibility-check
+vk.*###settings_ps_promo_big_banner_container
+vk.*##.settings_vkpay_promo_banner_link_a
+vk.*###settings_vkpay_promo_big_banner_container
+||vk.*/al_audio.php?act=need_show_promo^
+vk.*##.CatalogBlock__subscription, .CatalogSection__rightColumn > .CatalogSection__stickyColumn .CatalogBlock__separator
+vk.*##div#content > div._audio_page_layout.audio_page_layout.audio_page_layout2 > div._audio_page_content_block_wrap.audio_page_content_block_wrap > div.page_block._audio_page_content_block > div.audio_page_sections._audio_page_sections.clear_fix > div.audio_section.audio_w_covers._audio_section._audio_section__all.audio_section__all > div.audio_page_section_layout._audio_page_section_layout.has_friends_block > div.audio_page_all_layout_columns.clear_fix > div.audio_friends_list_wrap._audio_friends_list_wrap > div.audio_friends_list_content._audio_friends_list_content > div.audio_subscribe_promo
+vk.*##.audio_promo
+vk.*###content > div._audio_page_layout.audio_page_layout.audio_page_layout2 > div._audio_page_content_block_wrap.audio_page_content_block_wrap:nth-child(3) > div.audio_page_sections._audio_page_sections.clear_fix:last-child > div.audio_section._audio_section._audio_section__all.audio_section__all.clear_fix.audio_w_covers:last-child > div.CatalogSection.CatalogSection--divided.CatalogSection__my > div.CatalogBlock.CatalogBlock--divided:last-child > div.CatalogSection__columns > div.CatalogSection__rightColumn:last-child > div.CatalogSection__stickyColumn > div.CatalogBlock:last-child
+vk.*##.stories_feed_preview_item.story_feed_new_item.story_feed_new_item_promo
+vk.*##div#box_layer > div.popup_box_container.PushNotifierPopup__popup-box_type--suggest
+vk.*##.profile_rate_warning
+vk.*##.post_suggest._post_suggest
+vk.*##.ShortVideoStub
+vk.*###feed_blog_reminder
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.wall_text_name_explain_promoted_post)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="wall_text_name_explain_promoted_post"]']
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.MarketItemsFeedBlock)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="MarketItemsFeedBlock"]']
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.block_aliexpress-recommendations-carousel)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="block_aliexpress-recommendations-carousel"]']
+vk.*#%#//scriptlet('set-constant', 'window.Unauthorized2', 'undefined')
+vk.*#%#//scriptlet('set-constant', 'window.PageBottomBanners.initUnauthBanner', 'noopFunc')
+vk.*##aside[aria-label="Актуальные новости"]
+vk.*###cookies_policy_wrap
+vk.*##.OldBrowser
+vk.*##.LegalRecommendationsLinkLeftMenuAuthorized
+vk.*##.WideSeparator--legalRecommendationsLink
+vk.*#?##page_wall_posts > div[id^="post-"]:-abp-has(.FeedVideosForYou)
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"][-ext-has='div[class="FeedVideosForYou"]']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='> div._post_content > div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.FeedVideosForYou']
+vk.*###page_wall_posts > div[id^="post-"][-ext-has='div._post_content > div.post_content > div.post_info > div.wall_text > div.FeedVideosForYou']
+vk.*##.wall_wrap div[id^="post-"][-ext-has='div.post_content > div.post_info > div.wall_text > div.wall_post_cont > div.FeedVideosForYou']
+vk.*###feed_rows > div[class="feed_row "] > div[class^="feed_repost-"]:has(div[class="FeedVideosForYou"])
+vk.*##div[class^="feed_row "] > div[id^="feed_repost-"]:has(.FeedVideosForYou)
+vk.*##.FeedVideosForYou
+vk.*###page_block.FeedVideosForYou
+vk.*##.ReplyBoxDonut
+m.vk.*#?#.wall_item:has(> div.wi_body > div.ads_mark)
+m.vk.*##.wall_item[data-ad-view]
+m.vk.*##[class^="_ads_block_data_w"]
+m.vk.*##.wall_item.feedAssistance.GroupsRecommendedSlider
+m.vk.*##.wall_item.feedAssistance.friendsRecommendedSliderWrap
+m.vk.*##.wall_item.post_exploreBait
+m.vk.*##.wall_item.post_withExtraHeader
+m.vk.*##.vkuiModalRoot, .vkuiModalRoot--desktop
+m.vk.*##.vkuiPopoutRoot__modal
+vk.*###react_rootCheckValidationPhone
+vk.*##body:style(position:static!important)
+vk.*##.group_settings_advice
