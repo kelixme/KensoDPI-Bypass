@@ -1,6 +1,5 @@
 # KR.Corp Ultimate Bypass Suite
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows)](https://www.microsoft.com/windows)
 
 **Ультимативный набор инструментов для обхода блокировок и снятия замедлений трафика, инициируемых РКН (Роскомнадзором).**
@@ -40,9 +39,3 @@
 - **Операционная система:** Windows 7 SP1 / 8 / 10 / 11 (x64)
 - **Права администратора** (скрипты сами запросят повышение)
 - **Установленный PowerShell** (для функций проверки и создания ярлыков)
-
-### Пошаговая инструкция
-
-1. Скачайте релиз или клонируйте репозиторий:
-   ```bash
-   git clone https://github.com/KR-Corp/ultimate-bypass-suite.git
