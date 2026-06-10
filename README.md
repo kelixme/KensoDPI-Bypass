@@ -7,7 +7,7 @@
 Проект включает три мощные утилиты с единым интерфейсом для борьбы с цензурой, замедлением YouTube и другими видами ограничений в РФ. Работает на Windows 7/10/11.
 
 ![Workflow](https://img.shields.io/badge/Status-Active%20Maintained-brightgreen)
-![Version](https://img.shields.io/badge/version-2.0.1-blue)
+![Version](https://img.shields.io/badge/version-2.1-blue)
 
 ---
 
