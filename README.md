@@ -1,4 +1,4 @@
-# KR.Corp Ultimate Bypass Suite
+# KR.Corp Ultimate Bypass
 
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows)](https://www.microsoft.com/windows)
 
