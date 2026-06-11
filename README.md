@@ -2,8 +2,8 @@
 
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows)](https://www.microsoft.com/windows)
 
-Скачать последний релиз
-https://github.com/kelixme/KensoDPI-Bypass/releases/download/release/KensoDPI-Bypass.exe
+Скачать последний релиз:
+[KensoDPI-Bypass.exe](https://github.com/kelixme/KensoDPI-Bypass/releases/download/release/KensoDPI-Bypass.exe)
 
 **Ультимативный набор инструментов для обхода блокировок и снятия замедлений трафика, инициируемых РКН (Роскомнадзором).**
 
