@@ -2,6 +2,9 @@
 
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows)](https://www.microsoft.com/windows)
 
+Скачать последний релиз
+https://github.com/kelixme/KensoDPI-Bypass/releases/download/release/KensoDPI-Bypass.exe
+
 **Ультимативный набор инструментов для обхода блокировок и снятия замедлений трафика, инициируемых РКН (Роскомнадзором).**
 
 Проект включает три мощные утилиты с единым интерфейсом для борьбы с цензурой, замедлением YouTube и другими видами ограничений в РФ. Работает на Windows 7/10/11.
