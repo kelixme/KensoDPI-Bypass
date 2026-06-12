@@ -91,3 +91,9 @@ tbank.ru
 tochka-tech.com
 tochka.com
 vtb.ru
+event-log-api-data-platform-data-lake-prod.gryphline.com
+beyond.hg-cdn.com
+launcher.gryphline.com
+gl-utils-public.hg-cdn.com
+game-config.gryphline.com
+as.gryphline.com
