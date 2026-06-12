@@ -108,6 +108,10 @@ if "%menu_choice%"=="8" goto service_diagnostics
 if "%menu_choice%"=="9" goto run_tests
 goto menu
 
+:: ‚Š‹ž—…ˆ… TCP ==========================
+:tcp_enable
+netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul || netsh interface tcp set global timestamps=enabled > nul 2>&1
+exit /b
 
 :: ‡€ƒ“‡Š€ Ž‹œ‡Ž‚€’…‹œ‘Šˆ• ‘ˆ‘ŠŽ‚ =====================
 :load_user_lists
@@ -123,12 +127,6 @@ if not exist "%LISTS_PATH%list-exclude-user.txt" (
     echo domain.example.abc>"%LISTS_PATH%list-exclude-user.txt"
 )
 
-exit /b
-
-
-:: ‚Š‹ž—…ˆ… TCP ==========================
-:tcp_enable
-netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul || netsh interface tcp set global timestamps=enabled > nul 2>&1
 exit /b
 
 
