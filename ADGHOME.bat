@@ -8,7 +8,7 @@ set "original_codepage=%original_codepage: =%"
 reg add "HKCU\Console" /v CodePage /t REG_DWORD /d 65001 /f >nul 2>&1
 
 :: Переменные
-set VER=v2.1 BETA
+set VER=v2.0 BETA
 set SRVCDESC=AdGuardHome.Bypass - %VER%
 set ADG_HOME=AdGuardHome
 set SRVCDIR="%~dp0ADGHOME\lib\AdGuardHome.exe"

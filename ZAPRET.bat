@@ -1,5 +1,5 @@
 @echo off
-set LOCAL_VERSION=v2.1 BETA
+set LOCAL_VERSION=v2.2 BETA
 set SRVCDESC=Zapret.Bypass - %LOCAL_VERSION%
 title %SRVCDESC%
 
