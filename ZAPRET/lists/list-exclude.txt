@@ -91,6 +91,7 @@ tbank.ru
 tochka-tech.com
 tochka.com
 vtb.ru
+steamcommunity.com
 event-log-api-data-platform-data-lake-prod.gryphline.com
 beyond.hg-cdn.com
 launcher.gryphline.com
