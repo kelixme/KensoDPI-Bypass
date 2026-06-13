@@ -274,7 +274,7 @@ exit /b
 
 :create_shortcuts
 set WEB_URL=http://localhost:!CURRENT_PORT!
-set SHORTCUT_NAME=AdGuardHome
+set SHORTCUT_NAME=AdGuard Home
 set "ICON_ABS=%~dp0ADGHOME\favicon.ico"
 set "ICON_ABS_PS=%ICON_ABS:\=\\%"
 if exist "%ICON_ABS%" (
