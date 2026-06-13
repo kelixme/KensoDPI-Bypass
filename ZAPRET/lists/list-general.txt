@@ -48,3 +48,4 @@ betterttv.net
 localizeapi.com
 klipy.com
 workers.dev
+jut.su
