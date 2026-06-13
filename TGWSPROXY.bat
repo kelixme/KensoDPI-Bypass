@@ -17,7 +17,7 @@ set VALUE_NAME=TgWsProxy
 title %SRVCDESC%
 
 :menu
-mode con cols=69 lines=30
+@REM mode con cols=69 lines=30
 cls
 
 :: ®«ãç¥­¨¥ áâ âãá 
@@ -54,7 +54,7 @@ if "%choice%"=="2" goto uninstall
 goto menu
 
 :install
-mode con cols=69 lines=25
+@REM mode con cols=69 lines=25
 cls
 echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m“áâ ­®¢ª  TgWsProxy [90mÍÍÍÍ[0m
 
@@ -88,7 +88,7 @@ pause > nul
 goto menu
 
 :uninstall
-mode con cols=69 lines=25
+@REM mode con cols=69 lines=25
 cls
 echo  [90m-----------------------------------------------------------------[0m
 echo   [94m“¤ «¥­¨¥  ¢â®§ ¯ãáª  TgWsProxy[0m
