@@ -20,24 +20,6 @@ if "%~1"=="load_user_lists" (
     exit /b
 )
 
-if "%1"=="admin" (
-    call :check_command find
-    call :check_command findstr
-    call :check_command netsh
-    
-    call :load_user_lists
-
-    echo Запущено с правами администратора
-) else (
-    call :check_extracted
-    call :check_command powershell
-
-    echo Запрос прав администратора...
-    powershell -NoProfile -Command "Start-Process 'cmd.exe' -ArgumentList '/c \"\"%~f0\" admin\"' -Verb RunAs"
-    exit
-)
-
-
 :: МЕНЮ ================================
 setlocal EnableDelayedExpansion
 :menu
