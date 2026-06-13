@@ -18,7 +18,7 @@
 
 | Инструмент | Версия | Назначение |
 | :--- | :--- | :--- |
-| **Zapret DPI** | v2.0.1 BETA | Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. |
+| **Zapret DPI** | v2.0.1 BETA | Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. Доп функция FlClashX прокси (Экспериментально) |
 | **AdGuard Home** | v2.0.1 BETA | Сетевой фильтр рекламы, трекеров и блокировка вредоносных доменов на уровне DNS. |
 | **TGWsProxy** | v1.0 | Локальный прокси-сервер для стабильной работы Telegram Desktop при проблемах с подключением. |
 
