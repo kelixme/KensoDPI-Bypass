@@ -12,7 +12,7 @@ set VER=v2.0 BETA
 set SRVCDESC=AdGuardHome.Bypass - %VER%
 set ADG_HOME=AdGuardHome
 set SRVCDIR="%~dp0ADGHOME\lib\AdGuardHome.exe"
-set ICON_PATH=%~dp0ADGHOME\lib\favicon.ico
+set ICON_PATH=%~dp0ADGHOME\favicon.ico
 title %SRVCDESC%
 
 :menu
@@ -275,7 +275,7 @@ exit /b
 :create_shortcuts
 set WEB_URL=http://localhost:!CURRENT_PORT!
 set SHORTCUT_NAME=AdGuardHome
-set "ICON_ABS=%~dp0ADGHOME\lib\favicon.ico"
+set "ICON_ABS=%~dp0ADGHOME\favicon.ico"
 set "ICON_ABS_PS=%ICON_ABS:\=\\%"
 if exist "%ICON_ABS%" (
     set HAS_ICON=1
