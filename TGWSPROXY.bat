@@ -8,7 +8,7 @@ set "original_codepage=%original_codepage: =%"
 reg add "HKCU\Console" /v CodePage /t REG_DWORD /d 65001 /f >nul 2>&1
 
 :: ¥à¥¬¥­­ë¥
-set VER=v1.0
+set VER=v1.1 BETA
 set SRVCDESC=KR.Corp - TgWsProxy Bypass [%VER%]
 set PROG_NAME=TgWsProxy
 set PROG_PATH=C:\KensoDPI-Bypass\TGWSPROXY\TgWsProxy.exe
@@ -28,7 +28,7 @@ if %errorlevel% equ 0 set AUTORUN_STATUS=“áâ ­®¢«¥­
 tasklist /FI "IMAGENAME eq TgWsProxy.exe" 2>nul | find /I "TgWsProxy.exe" >nul
 if %errorlevel% equ 0 (set PROCESS_STATUS=[92m‡ ¯ãé¥­) else (set PROCESS_STATUS=[91m¥ § ¯ãé¥­)
 
-echo  [95mKR.Corp - TgWsProxy Bypass [90m[[91m%VER%[90m][0m
+echo  [96mKensoDPI [90m[[94mTgWsProxy.Bypass [90m- [91m%VER%[90m][0m
 echo  [90m-----------------------------------------------------------------[0m
 :: à®¢¥àª  ¯à ¢  ¤¬¨­¨áâà â®à 
 net session >nul 2>&1
@@ -40,13 +40,13 @@ if %errorLevel% == 0 (
     exit
 )
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ “¯à ¢«¥­¨¥ [92mTgWsProxy [90mÍÍÍÍ[0m
+echo  [90m======================================= “¯à ¢«¥­¨¥ [92mTgWsProxy [90m====[0m
 echo   [96m‘¥à¢¨á: [92m!AUTORUN_STATUS![0m
 echo   [96mà®æ¥áá: [92m!PROCESS_STATUS![0m
 echo  [90m-----------------------------------------------------------------[0m
 echo   [93m1 [90m-[0m [92m“áâ ­®¢¨âì á¥à¢¨á[0m
 echo   [93m2 [90m-[0m [91m“¤ «¨âì á¥à¢¨á[0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ[0m
+echo  [90m=================================================================[0m
 set /p choice=[96m  ‚ë¡®à: [93m
 
 if "%choice%"=="1" goto install
@@ -56,11 +56,11 @@ goto menu
 :install
 @REM mode con cols=69 lines=25
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m“áâ ­®¢ª  TgWsProxy [90mÍÍÍÍ[0m
+echo  [90m======================================== [94m“áâ ­®¢ª  TgWsProxy [90m====[0m
 
 if not exist "%PROG_PATH%" (
     echo   [91m[Ž˜ˆŠ€] ” ©« ­¥ ­ ©¤¥­: %PROG_PATH%[0m
-    echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+    echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
     pause > nul
     goto menu
 )
@@ -83,7 +83,7 @@ if %errorLevel% equ 0 (
 
 echo  [90m-----------------------------------------------------------------[0m
 echo   [92m“áâ ­®¢ª  ãá¯¥è­® § ¢¥àè¥­ ![0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -112,6 +112,6 @@ if %errorLevel% equ 0 (
 
 echo  [90m-----------------------------------------------------------------[0m
 echo   [92m“¤ «¥­¨¥ ãá¯¥è­® § ¢¥àè¥­®![0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu

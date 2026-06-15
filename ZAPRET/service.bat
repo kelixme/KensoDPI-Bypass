@@ -1,5 +1,5 @@
 @echo off
-set "LOCAL_VERSION=1.9.8c"
+set "LOCAL_VERSION=1.9.7b"
 
 :: External commands
 if "%~1"=="status_zapret" (
@@ -51,44 +51,42 @@ if "%1"=="admin" (
 )
 
 
-:: MENU ================================
+:: MENU ================================echo:
 setlocal EnableDelayedExpansion
 :menu
 cls
 call :ipset_switch_status
 call :game_switch_status
 call :check_updates_switch_status
-call :get_strategy_name
 
 set "menu_choice=null"
 
-echo.
+echo:
 echo   ZAPRET SERVICE MANAGER v!LOCAL_VERSION!
-echo.  !CurrentStrategy!
 echo   ----------------------------------------
-echo.
+echo:
 echo   :: SERVICE
 echo      1. Install Service
 echo      2. Remove Services
 echo      3. Check Status
-echo.
+echo:
 echo   :: SETTINGS
 echo      4. Game Filter         [!GameFilterStatus!]
 echo      5. IPSet Filter        [!IPsetStatus!]
 echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
-echo.
+echo:
 echo   :: UPDATES
 echo      7. Update IPSet List
 echo      8. Update Hosts File
 echo      9. Check for Updates
-echo.
+echo:
 echo   :: TOOLS
 echo      10. Run Diagnostics
 echo      11. Run Tests
-echo.
+echo:
 echo   ----------------------------------------
 echo      0. Exit
-echo.
+echo:
 
 set /p menu_choice=   Select option (0-11): 
 
@@ -126,7 +124,6 @@ exit /b
 
 :: TCP ENABLE ==========================
 :tcp_enable
-chcp 437 > nul
 netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul || netsh interface tcp set global timestamps=enabled > nul 2>&1
 exit /b
 
@@ -557,9 +554,9 @@ set "hostsFile=%SystemRoot%\System32\drivers\etc\hosts"
 if exist "%hostsFile%" (
     set "yt_found=0"
     >nul 2>&1 findstr /I "youtube.com" "%hostsFile%" && set "yt_found=1"
-    >nul 2>&1 findstr /I "youtu.be" "%hostsFile%" && set "yt_found=1"
+    >nul 2>&1 findstr /I "yotou.be" "%hostsFile%" && set "yt_found=1"
     if !yt_found!==1 (
-        call :PrintYellow "[?] Your hosts file contains entries for youtube.com or youtu.be. This may cause problems with YouTube access"
+        call :PrintYellow "[?] Your hosts file contains entries for youtube.com or yotou.be. This may cause problems with YouTube access"
     )
 )
 
@@ -751,10 +748,10 @@ echo   0. Disable
 echo   1. TCP and UDP
 echo   2. TCP only
 echo   3. UDP only
-echo.
+echo:
 set "GameFilterChoice=0"
 set /p "GameFilterChoice=Select option (0-3, default: 0): "
-if "%GameFilterChoice%"=="" set "GameFilterChoice=0"
+if %GameFilterChoice%=="" set "GameFilterChoice=0"
 
 if "%GameFilterChoice%"=="0" (
     if exist "%gameFlagFile%" (
@@ -886,12 +883,7 @@ set "url=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/
 echo Updating ipset-all...
 
 if exist "%SystemRoot%\System32\curl.exe" (
-    curl --version | find "libcurl/7"
-    if !errorlevel!==0 (
-        curl --ssl-no-revoke -L -o "%listFile%" "%url%"
-    ) else (
-        curl --ssl-revoke-best-effort -L -o "%listFile%" "%url%"
-    )
+    curl -L -o "%listFile%" "%url%"
 ) else (
     powershell -NoProfile -Command ^
         "$url = '%url%';" ^
@@ -985,23 +977,16 @@ powershell -NoProfile -Command "if ($PSVersionTable -and $PSVersionTable.PSVersi
 if %errorLevel% neq 0 (
     echo PowerShell 3.0 or newer is required.
     echo Please upgrade PowerShell and rerun this script.
-    echo.
+    echo:
     pause
     goto menu
 )
 
 echo Starting configuration tests in PowerShell window...
-echo.
+echo:
 start "" powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0utils\test zapret.ps1"
 pause
 goto menu
-
-
-:: Get strategy name
-:get_strategy_name
-set "CurrentStrategy="
-for /f "tokens=2*" %%A in ('reg query "HKLM\System\CurrentControlSet\Services\zapret" /v zapret-discord-youtube 2^>nul') do set "CurrentStrategy=Strategy: %%B"
-exit /b
 
 
 :: Utility functions

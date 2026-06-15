@@ -41,7 +41,7 @@ if %errorLevel% == 0 (
     powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'" > nul
     exit
 )
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ “¯à ¢«¥­¨¥ [92mZapret[90m ÍÍÍÍ[0m
+echo  [90m========================================== “¯à ¢«¥­¨¥ [92mZapret[90m ====[0m
 net session >nul 2>&1
 if %errorLevel% == 0 (
     sc query "zapret" >nul 2>&1
@@ -66,48 +66,30 @@ if %errorLevel% == 0 (
 )
 
 echo  [90m-----------------------------------------------------------------[0m
-echo   [93m1 [90m-[0m [92m“áâ ­®¢¨âì á«ã¦¡ã[0m
-echo   [93m2 [90m-[0m [91m“¤ «¨âì á«ã¦¡ë[0m
-echo   [93m3 [90m-[0m [96mà®¢¥à¨âì áâ âãá[0m
-echo   [93m4 [90m-[0m [96mˆ£à®¢®© ä¨«ìâà[0m          [90m[[93m!GameFilterStatus![90m][0m
-echo   [93m5 [90m-[0m [96mIPSet ä¨«ìâà[0m            [90m[[93m!IPsetStatus![90m][0m
-echo   [93m6 [90m-[0m [96mŽ¡­®¢¨âì á¯¨á®ª IPSet[0m
-echo   [93m7 [90m-[0m [96mŽ¡­®¢¨âì ä ©« hosts[0m
-echo   [93m8 [90m-[0m [96m‡ ¯ãáâ¨âì ¤¨ £­®áâ¨ªã[0m
-echo   [93m9 [90m-[0m [96m‡ ¯ãáâ¨âì â¥áâë[0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ ‡ ¯ãáª ¬¥­¥¤¦¥à  [92mProxy[90m ÍÍÍÍ[0m
-echo   [93m¥ª®¬¥­¤ã¥âáï ¨á¯®«ì§®¢ âì ¥á«¨ ­¥ ¯®¬®£ ®¡ëç­ë© § ¯à¥â,
-echo   [93míâ®â ¬¥â®¤ ¬®¦¥â § ¬¥¤«¨âì áª®à®áâì ¨â¥à­¥â  ¯¨­£ ,
-echo   [93m¢® ¢à¥¬ï ¨á¯®«ì§®¢ ­¨ï ¯à®ªá¨.
-echo  [90m-----------------------------------------------------------------[0m
-echo   [93m10[90m -[0m [96m‡ ¯ãáâ¨âì FlClashX   [90m[[93mSOCKS5[90m][0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ[0m
+echo    [93m1[90m. [92m“áâ ­®¢¨âì á«ã¦¡ã[0m
+echo    [93m2[90m. [91m“¤ «¨âì á«ã¦¡ë[0m
+echo    [93m3[90m. [95mŠ®­ä¨£ãà â®à «¨áâ [0m      [90m[[93mlist-general.txt[90m][0m
+echo    [93m4[90m. [96mà®¢¥à¨âì áâ âãá[0m
+echo    [93m5[90m. [96mˆ£à®¢®© ä¨«ìâà[0m          [90m[[93m!GameFilterStatus![90m][0m
+echo    [93m6[90m. [96mIPSet ä¨«ìâà[0m            [90m[[93m!IPsetStatus![90m][0m
+echo    [93m7[90m. [96mŽ¡­®¢¨âì á¯¨á®ª IPSet[0m
+echo    [93m8[90m. [96mŽ¡­®¢¨âì ä ©« hosts[0m
+echo    [93m9[90m. [96m‡ ¯ãáâ¨âì ¤¨ £­®áâ¨ªã[0m
+echo   [93m10[90m. [96m‡ ¯ãáâ¨âì â¥áâë[0m
+echo  [90m=================================================================[0m
 set /p menu_choice=[96m  ‚ë¡®à: [93m
 
 if "%menu_choice%"=="" goto menu
 if "%menu_choice%"=="1" goto service_install
 if "%menu_choice%"=="2" goto service_remove
-if "%menu_choice%"=="3" goto service_status
-if "%menu_choice%"=="4" goto game_switch
-if "%menu_choice%"=="5" goto ipset_switch
-if "%menu_choice%"=="6" goto ipset_update
-if "%menu_choice%"=="7" goto hosts_update
-if "%menu_choice%"=="8" goto service_diagnostics
-if "%menu_choice%"=="9" goto run_tests
-if "%menu_choice%"=="10" goto run_flclashx
-goto menu
-
-:: ‡€“‘Š FlClashX ========================
-:run_flclashx
-cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m‡ ¯ãáª FlClashX [90mÍÍÍÍ[0m
-echo   [93m[*] ‡ ¯ãáª FlClashX...[0m
-
-set "FLCLASHX_PATH=C:\KensoDPI-Bypass\FlClashX\FlClashX.exe"
-start "" "%FLCLASHX_PATH%"
-
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
-pause > nul
+if "%menu_choice%"=="3" goto list_editor_init
+if "%menu_choice%"=="4" goto service_status
+if "%menu_choice%"=="5" goto game_switch
+if "%menu_choice%"=="6" goto ipset_switch
+if "%menu_choice%"=="7" goto ipset_update
+if "%menu_choice%"=="8" goto hosts_update
+if "%menu_choice%"=="9" goto service_diagnostics
+if "%menu_choice%"=="10" goto run_tests
 goto menu
 
 :: ‚Š‹ž—…ˆ… TCP ==========================
@@ -136,7 +118,7 @@ exit /b
 :service_status
 @REM mode con cols=69 lines=25
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m‘â âãá á«ã¦¡ë [90mÍÍÍÍ[0m
+echo  [90m============================================== [94m‘â âãá á«ã¦¡ë [90m====[0m
 
 sc query "zapret" >nul 2>&1
 if !errorlevel!==0 (
@@ -159,7 +141,7 @@ if !errorlevel!==0 (
     call :PrintRed "  Ž¡å®¤ winws.exe ­¥ § ¯ãé¥­."
 )
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -191,7 +173,7 @@ exit /b
 :service_remove
 @REM mode con cols=69 lines=15
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m“¤ «¥­¨¥ á«ã¦¡ [90mÍÍÍÍ[0m
+echo  [90m============================================= [94m“¤ «¥­¨¥ á«ã¦¡ [90m====[0m
 
 set SRVCNAME=zapret
 sc query "!SRVCNAME!" >nul 2>&1
@@ -220,7 +202,7 @@ if !errorlevel!==0 (
 net stop "WinDivert14" >nul 2>&1
 sc delete "WinDivert14" >nul 2>&1
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -229,7 +211,7 @@ goto menu
 :service_install
 @REM mode con cols=69 lines=25
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m“áâ ­®¢ª  á«ã¦¡ë [90mÍÍÍÍ[0m
+echo  [90m=========================================== [94m“áâ ­®¢ª  á«ã¦¡ë [90m====[0m
 
 :: Main
 cd /d "%~dp0ZAPRET\"
@@ -246,7 +228,7 @@ for /f "delims=" %%F in ('powershell -NoProfile -Command "Get-ChildItem -Literal
 :: ‚ë¡®à ä ©« 
 set "choice="
 @REM echo.
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ[0m
+echo  [90m=================================================================[0m
 set /p "choice=[96m  ‚¢¥¤¨â¥ ­®¬¥à ä ©« : [93m"
 if "!choice!"=="" (
     echo   [91m[!] ¥¢¥à­ë© ¢ë¡®à, ¢ëå®¤...[0m
@@ -368,7 +350,7 @@ for %%F in ("!file%choice%!") do (
 reg add "HKLM\System\CurrentControlSet\Services\zapret" /v zapret-discord-youtube /t REG_SZ /d "!filename!" /f >nul 2>&1
 echo   [92m[+] ‘«ã¦¡  ãá¯¥è­® ãáâ ­®¢«¥­ ![0m
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -377,7 +359,7 @@ goto menu
 :service_diagnostics
 @REM mode con cols=69 lines=30
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m„¨ £­®áâ¨ª  [90mÍÍÍÍ[0m
+echo  [90m=================================================== [94m„¨ £­®áâ¨ª  [90m====[0m
 
 :: Base Filtering Engine
 sc query BFE | findstr /I "RUNNING" > nul
@@ -671,7 +653,7 @@ if /i "!CHOICE!"=="Y" (
 )
 echo.
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -682,7 +664,7 @@ goto menu
 set "gameFlagFile=%~dp0ZAPRET\utils\game_filter.enabled"
 
 if not exist "%gameFlagFile%" (
-    set "GameFilterStatus=‚ëª«"
+    set "GameFilterStatus=Žâª«îç¥­"
     set "GameFilter=12"
     set "GameFilterTCP=12"
     set "GameFilterUDP=12"
@@ -695,17 +677,17 @@ for /f "usebackq delims=" %%A in ("%gameFlagFile%") do (
 )
 
 if /i "%GameFilterMode%"=="all" (
-    set "GameFilterStatus=‚ª«îç¥­ (TCP+UDP)"
+    set "GameFilterStatus=‚ª«îç¥­ - TCP/UDP"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=1024-65535"
     set "GameFilterUDP=1024-65535"
 ) else if /i "%GameFilterMode%"=="tcp" (
-    set "GameFilterStatus=‚ª«îç¥­ (TCP)"
+    set "GameFilterStatus=‚ª«îç¥­ - TCP"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=1024-65535"
     set "GameFilterUDP=12"
 ) else (
-    set "GameFilterStatus=‚ª«îç¥­ (UDP)"
+    set "GameFilterStatus=‚ª«îç¥­ - UDP"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=12"
     set "GameFilterUDP=1024-65535"
@@ -716,12 +698,12 @@ exit /b
 :game_switch
 @REM mode con cols=69 lines=20
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94mˆ£à®¢®© ä¨«ìâà [90mÍÍÍÍ[0m
+echo  [90m============================================= [94mˆ£à®¢®© ä¨«ìâà [90m====[0m
 echo   [93m0[90m -[0m [91mŽâª«îç¨âì[0m
 echo   [93m1[90m -[0m [96mTCP ¨ UDP[0m
 echo   [93m2[90m -[0m [96m’®«ìª® TCP[0m
 echo   [93m3[90m -[0m [96m’®«ìª® UDP[0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ[0m
+echo  [90m=================================================================[0m
 set "GameFilterChoice=0"
 set /p "GameFilterChoice=[96m  ‚ë¡®à: [93m"
 if "%GameFilterChoice%"=="" set "GameFilterChoice=0"
@@ -749,7 +731,7 @@ if "%GameFilterChoice%"=="0" (
 )
 
 call :PrintYellow "  ¥à¥§ ¯ãáâ¨â¥ á«ã¦¡ã zapret, çâ®¡ë ¯à¨¬¥­¨âì ¨§¬¥­¥­¨ï"
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -782,7 +764,7 @@ exit /b
 :ipset_switch
 @REM mode con cols=69 lines=15
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94mIPSet ä¨«ìâà [90mÍÍÍÍ[0m
+echo  [90m=============================================== [94mIPSet ä¨«ìâà [90m====[0m
 
 set "listFile=%~dp0ZAPRET\lists\ipset-all.txt"
 set "backupFile=%listFile%.backup"
@@ -824,7 +806,7 @@ if "%IPsetStatus%"=="Loaded" (
     )
 )
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -833,7 +815,7 @@ goto menu
 :ipset_update
 @REM mode con cols=69 lines=15
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94mŽ¡­®¢«¥­¨¥ á¯¨áª  IPSet [90mÍÍÍÍ[0m
+echo  [90m=================================================== [94mŽ¡­®¢«¥­¨¥ á¯¨áª  IPSet [90m====[0m
 
 set "listFile=%~dp0ZAPRET\lists\ipset-all.txt"
 set "url=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/ipset-service.txt"
@@ -858,7 +840,7 @@ if exist "%SystemRoot%\System32\curl.exe" (
 )
 
 echo   [92m[+] Ž¡­®¢«¥­¨¥ § ¢¥àè¥­®.[0m
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -867,7 +849,7 @@ goto menu
 :hosts_update
 @REM mode con cols=69 lines=20
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94mŽ¡­®¢«¥­¨¥ ä ©«  hosts [90mÍÍÍÍ[0m
+echo  [90m=================================================== [94mŽ¡­®¢«¥­¨¥ ä ©«  hosts [90m====[0m
 
 set "hostsFile=%SystemRoot%\System32\drivers\etc\hosts"
 set "hostsUrl=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts"
@@ -926,7 +908,7 @@ if "%needsUpdate%"=="1" (
     if exist "%tempFile%" del /f /q "%tempFile%" 2>nul
 )
 
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -935,7 +917,7 @@ goto menu
 :run_tests
 @REM mode con cols=69 lines=15
 cls
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [94m‡ ¯ãáª â¥áâ®¢ [90mÍÍÍÍ[0m
+echo  [90m============================================== [94m‡ ¯ãáª â¥áâ®¢ [90m====[0m
 
 :: ’à¥¡ã¥âáï PowerShell 3.0+
 powershell -NoProfile -Command "if ($PSVersionTable -and $PSVersionTable.PSVersion -and $PSVersionTable.PSVersion.Major -ge 3) { exit 0 } else { exit 1 }" >nul 2>&1
@@ -949,7 +931,7 @@ if %errorLevel% neq 0 (
 
 echo   [93m[*] ‡ ¯ãáª â¥áâ®¢ ª®­ä¨£ãà æ¨¨ ¢ ®ª­¥ PowerShell...[0m
 start "" powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ZAPRET\utils\test zapret.ps1"
-echo  [90mÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ [93m ¦¬¨â¥ [94mENTER[0m
+echo  [90m=================================================== [93m ¦¬¨â¥ [94mENTER[0m
 pause > nul
 goto menu
 
@@ -989,3 +971,224 @@ if "%extracted%"=="0" (
     exit
 )
 exit /b 0
+
+
+:: ˆ’…ƒˆŽ‚€›‰ …„€Š’Ž ‘ˆ‘ŠŽ‚ (ã­ªâ 11) =============
+
+:list_editor_init
+set "EDITOR_VERSION=v1.3"
+set "SELECTED_FILE=%~dp0ZAPRET\utils\selected.txt"
+set "PRESETS_DIR=%~dp0ZAPRET\lists\presets"
+
+if not exist "%PRESETS_DIR%" (
+    echo[ ERROR ]  ¯ª  %PRESETS_DIR% ­¥ ­ ©¤¥­ ![0m
+    pause
+    goto menu
+)
+
+:load_selected
+set "selected_list="
+if exist "%SELECTED_FILE%" (
+    for /f "usebackq delims=" %%i in ("%SELECTED_FILE%") do (
+        set "found=0"
+        for %%a in (!selected_list!) do (
+            if "%%a"=="%%i" set "found=1"
+        )
+        if !found!==0 (
+            if not "!selected_list!"=="" set "selected_list=!selected_list! %%i"
+            if "!selected_list!"=="" set "selected_list=%%i"
+        )
+    )
+)
+
+:refresh_list
+set "file_list="
+set "file_count=0"
+for %%f in ("%PRESETS_DIR%\*.txt") do (
+    set /a file_count+=1
+    set "file_!file_count!=%%~nxf"
+    set "file_name_!file_count!=%%~nxf"
+    set "file_selected_!file_count!=0"
+    
+    if defined selected_list (
+        for %%s in (!selected_list!) do (
+            if "%%s"=="%%~nxf" set "file_selected_!file_count!=1"
+        )
+    )
+)
+set "total_files=!file_count!"
+set "current_pos=1"
+set "current_page=1"
+set "items_per_page=15"
+
+set /a "total_pages=(total_files+items_per_page-1)/items_per_page"
+if !total_pages! lss 1 set "total_pages=1"
+
+:editor_menu
+cls
+echo  [90m================================================ [94m¥¤ ªâ®à á¯¨áª®¢ [90m====[0m
+echo   [90m ˆá¯®«ì§ã©â¥ [93m‘’…‹Šˆ[90m ¤«ï ­ ¢¨£ æ¨¨, [93mà®¡¥«/Enter[90m ¤«ï ¢ë¡®à [0m
+echo  [90m----------------------------------------------------------------------[0m
+
+set /a "start_item=(current_page-1)*items_per_page+1"
+set /a "end_item=current_page*items_per_page"
+if !end_item! gtr !total_files! set "end_item=!total_files!"
+
+for /l %%i in (!start_item!,1,!end_item!) do (
+    set "selected_status= "
+    if !file_selected_%%i!==1 set "selected_status=[48;2;50;50;50m[48;2;0;130;0m[38;2;100;255;100m "
+    if !file_selected_%%i!==0 set "selected_status=[48;2;50;50;50m[48;2;130;0;0m[38;2;255;100;100m "
+
+    if %%i==!current_pos! (
+        echo  ^> !selected_status![48;2;50;50;50m[38;2;255;255;70m !file_name_%%i! [0m
+    ) else (
+        echo    !selected_status![48;2;24;24;24m !file_name_%%i! [0m
+    )
+)
+
+set /a "empty_lines=items_per_page-(end_item-start_item+1)"
+for /l %%i in (1,1,!empty_lines!) do echo.
+echo  [90m----------------------------------------------------------------------[0m
+echo                   [93m[[96m^< [0mà¥¤.[93m] [90m‘âà ­¨æ : !current_page!/!total_pages! [93m[[96m^> [0m‘«¥¤.[93m]
+echo  [90m======================================================================[0m
+echo   [93m[[96mA [0m‚ë¡à âì ¢á¥[93m] [93m[[96mN [0m‘­ïâì ¢á¥[93m] [93m[[96mS [0m‘®åà ­¨âì[93m] [93m[[96mR [0mŽ¡­®¢¨âì[93m] [93m[[96mQ [0m‚ëå®¤[93m]
+echo  [90m======================================================================[0m
+
+set "key="
+for /f "delims=" %%a in ('powershell -Command "$key = $host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown').VirtualKeyCode; Write-Host $key"') do set "key=%%a"
+
+:: ‘âà¥«ª  ¢¢¥àå (38)
+if "%key%"=="38" (
+    set /a current_pos-=1
+    if !current_pos! lss !start_item! (
+        if !current_page! gtr 1 (
+            set /a current_page-=1
+            set /a "current_pos=(current_page-1)*items_per_page+items_per_page"
+            if !current_pos! gtr !total_files! set "current_pos=!total_files!"
+        ) else (
+            set "current_pos=1"
+        )
+    )
+    if !current_pos! lss 1 set "current_pos=1"
+    goto editor_menu
+)
+
+:: ‘âà¥«ª  ¢­¨§ (40)
+if "%key%"=="40" (
+    set /a current_pos+=1
+    if !current_pos! gtr !end_item! (
+        if !current_page! lss !total_pages! (
+            set /a current_page+=1
+            set /a "current_pos=(current_page-1)*items_per_page+1"
+        ) else (
+            set "current_pos=!total_files!"
+        )
+    )
+    if !current_pos! gtr !total_files! set "current_pos=!total_files!"
+    goto editor_menu
+)
+
+:: ‘âà¥«ª  ¢«¥¢® (37)
+if "%key%"=="37" (
+    if !current_page! gtr 1 (
+        set /a current_page-=1
+        set /a "current_pos=(current_page-1)*items_per_page+1"
+    )
+    goto editor_menu
+)
+
+:: ‘âà¥«ª  ¢¯à ¢® (39)
+if "%key%"=="39" (
+    if !current_page! lss !total_pages! (
+        set /a current_page+=1
+        set /a "current_pos=(current_page-1)*items_per_page+1"
+    )
+    goto editor_menu
+)
+
+:: Enter (13) ¨«¨ à®¡¥« (32)
+if "%key%"=="13" goto toggle_select
+if "%key%"=="32" goto toggle_select
+goto check_other_keys
+
+:toggle_select
+if !file_selected_%current_pos%!==1 (
+    set "file_selected_%current_pos%=0"
+) else (
+    set "file_selected_%current_pos%=1"
+)
+goto editor_menu
+
+:check_other_keys
+if "%key%"=="65" goto select_all
+if "%key%"=="97" goto select_all
+if "%key%"=="78" goto clear_all
+if "%key%"=="110" goto clear_all
+if "%key%"=="83" goto save_and_merge
+if "%key%"=="115" goto save_and_merge
+if "%key%"=="82" goto refresh_list
+if "%key%"=="114" goto refresh_list
+if "%key%"=="81" goto menu
+if "%key%"=="113" goto menu
+goto editor_menu
+
+:select_all
+for /l %%i in (1,1,%total_files%) do set "file_selected_%%i=1"
+goto editor_menu
+
+:clear_all
+for /l %%i in (1,1,%total_files%) do set "file_selected_%%i=0"
+goto editor_menu
+
+:save_and_merge
+cls
+echo  [96m======================================================================[0m
+echo   [94m‘®åà ­¥­¨¥ ¨ ®¡ê¥¤¨­¥­¨¥ á¯¨áª®¢...[0m
+echo  [96m======================================================================[0m
+
+set "OUTPUT_FILE=%~dp0ZAPRET\lists\list-general.txt"
+set "TEMP_FILE=%TEMP%\merged_list_temp.txt"
+
+if exist "%TEMP_FILE%" del "%TEMP_FILE%" 2>nul
+if exist "%SELECTED_FILE%" del "%SELECTED_FILE%" 2>nul
+
+set "merged_count=0"
+
+for /l %%i in (1,1,%total_files%) do (
+    if !file_selected_%%i!==1 (
+        set /a merged_count+=1
+        echo !file_name_%%i!>> "%SELECTED_FILE%"
+        echo   [96m[*] „®¡ ¢«¥­¨¥: !file_name_%%i![0m
+        
+        if exist "%PRESETS_DIR%\!file_name_%%i!" (
+            type "%PRESETS_DIR%\!file_name_%%i!" >> "%TEMP_FILE%"
+            echo. >> "%TEMP_FILE%"
+        )
+    )
+)
+
+if !merged_count!==0 (
+    echo   [91m[*] ¥ ¢ë¡à ­® ­¨ ®¤­®£® ä ©« . ã¤¥â á®§¤ ­ ¯ãáâ®© á¯¨á®ª.[0m
+    type nul > "%OUTPUT_FILE%" 2>nul
+    echo   [92m[+] ‘®§¤ ­ ¯ãáâ®© ä ©«: %OUTPUT_FILE%[0m
+    set "line_count=0"
+) else (
+    if exist "%TEMP_FILE%" (
+        powershell -Command "Get-Content '%TEMP_FILE%' | Where-Object {$_ -ne ''} | Sort-Object | Get-Unique" > "%OUTPUT_FILE%" 2>nul
+        if errorlevel 1 (
+            type "%TEMP_FILE%" > "%OUTPUT_FILE%" 2>nul
+        )
+        del "%TEMP_FILE%" 2>nul
+        
+        set "line_count=0"
+        for /f %%i in ('type "%OUTPUT_FILE%" ^| find /c /v ""') do set "line_count=%%i"
+    )
+)
+
+echo  [90m----------------------------------------------------------------------[0m
+echo   [92m[+] “á¯¥è­® ®¡ê¥¤¨­¥­® ä ©«®¢: !merged_count![0m
+echo   [92m[+] ‚á¥£® ã­¨ª «ì­ëå áâà®ª § ¯¨á ­®: %line_count%[0m
+echo  [90m----------------------------------------------------------------------[0m
+echo   [93m ¦¬¨â¥ «î¡ãî ª« ¢¨èã ¤«ï ¢®§¢à â  ¢ à¥¤ ªâ®à...[0m
+pause >nul
+goto load_selected

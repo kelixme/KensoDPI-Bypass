@@ -1,0 +1,3 @@
+discord.txt
+discord_ipset.txt
+general.txt
