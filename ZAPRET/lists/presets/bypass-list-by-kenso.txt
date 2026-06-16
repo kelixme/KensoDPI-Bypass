@@ -1,8 +1,0 @@
-pornhub.com
-phncdn.com
-bcvcdn.com
-etahub.com
-hammerandchisel.zendesk.com
-zendesk.com
-*.microsoft.com
-microsoft.com

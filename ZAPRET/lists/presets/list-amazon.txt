@@ -1,5 +1,0 @@
-signin. aws.amazon .com
-s3. amazonaws .com
-amazonaws .com
-awsapps. com
-sso. amazonaws .com
