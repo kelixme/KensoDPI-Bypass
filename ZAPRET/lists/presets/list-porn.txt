@@ -145,3 +145,6 @@ alt4.r34.app
 api-cdn-mp4.rule34.xxx
 rule34.xxx
 *.rule34.xxx
+www.fluidplayer.com
+fluidplayer.com
+*.fluidplayer.com
