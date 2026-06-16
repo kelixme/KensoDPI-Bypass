@@ -10,7 +10,7 @@
 Проект включает три мощные утилиты с единым интерфейсом для борьбы с цензурой, замедлением YouTube и другими видами ограничений в РФ. Работает на Windows 7/10/11.
 
 ![Workflow](https://img.shields.io/badge/Status-Active%20Maintained-brightgreen)
-![Version](https://img.shields.io/badge/version-2.1-blue)
+![Version](https://img.shields.io/badge/version-2.4-blue)
 
 ---
 
@@ -18,7 +18,7 @@
 
 | Инструмент | Назначение |
 | :--- | :--- |
-| **Zapret DPI** | Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. Доп функция FlClashX прокси (Экспериментально) |
+| **Zapret DPI** | Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. Есть встроенный редактор списков |
 | **AdGuard Home** | Сетевой фильтр рекламы, трекеров и блокировка вредоносных доменов на уровне DNS. |
 | **TGWsProxy** | Локальный прокси-сервер для стабильной работы Telegram Desktop при проблемах с подключением. |
 
