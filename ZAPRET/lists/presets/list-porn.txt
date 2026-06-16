@@ -142,3 +142,5 @@ alt1.r34.app
 alt2.r34.app
 alt3.r34.app
 alt4.r34.app
+api-cdn-mp4.rule34.xxx
+rule34.xxx
