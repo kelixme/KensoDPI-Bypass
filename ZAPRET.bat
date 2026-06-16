@@ -818,7 +818,7 @@ cls
 echo  [90m=================================================== [94mОбновление списка IPSet [90m====[0m
 
 set "listFile=%~dp0ZAPRET\lists\ipset-all.txt"
-set "url=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/ipset-service.txt"
+set "url=https://raw.githubusercontent.com/kelixme/KensoDPI-Bypass/refs/heads/main/.service/ipset-service.txt"
 
 echo   [93m[*] Обновление ipset-all...[0m
 
@@ -852,7 +852,7 @@ cls
 echo  [90m=================================================== [94mОбновление файла hosts [90m====[0m
 
 set "hostsFile=%SystemRoot%\System32\drivers\etc\hosts"
-set "hostsUrl=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts"
+set "hostsUrl=https://raw.githubusercontent.com/kelixme/KensoDPI-Bypass/refs/heads/main/.service/hosts"
 set "tempFile=%TEMP%\zapret_hosts.txt"
 set "needsUpdate=0"
 
