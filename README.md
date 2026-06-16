@@ -1,4 +1,15 @@
+
+<div align="center">
+
 # KR.Corp Ultimate Bypass
+
+<img height="200" src="https://github.com/kelixme/KensoDPI-Bypass/blob/Images/image.gif?raw=true"/>
+
+Powered by KetaruCorp ✨
+
+<hr>
+
+<div id="logo">
 
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows)](https://www.microsoft.com/windows)
 
