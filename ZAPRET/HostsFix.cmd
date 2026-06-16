@@ -14,7 +14,7 @@ if %errorlevel% neq 0 (
 )
 
 set "hostsFile=%SystemRoot%\System32\drivers\etc\hosts"
-set "hostsUrl=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts"
+set "hostsUrl=https://raw.githubusercontent.com/kelixme/KensoDPI-Bypass/refs/heads/main/.service/hosts"
 set "tempFile=%TEMP%\zapret_hosts.txt"
 set "backupFile=%TEMP%\hosts_backup_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%.bak"
 set "needsUpdate=0"
