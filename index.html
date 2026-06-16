@@ -7,6 +7,11 @@
     <!-- Font Awesome Icons (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
+        *{
+            font-family: "Unbounded", sans-serif;
+        }
         /* ===== CUSTOM SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 10px;
@@ -41,7 +46,7 @@
         }
 
         body {
-            background: #0b0e14;
+            background: #000000;
             font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
             display: flex;
             justify-content: center;
@@ -54,8 +59,8 @@
         .card {
             max-width: 1060px;
             width: 100%;
-            background: #141a22;
-            border-radius: 32px;
+            background: #130818;
+            border-radius: 10px;
             padding: 2.2rem 2rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
             transition: all 0.2s ease;
@@ -104,26 +109,20 @@
         }
 
         .gif-wrapper img {
-            max-width: 440px;
+            max-width: 470px;
             width: 100%;
             height: auto;
-            border-radius: 24px;
+            border-radius: 14px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(124, 58, 237, 0.15);
-            background: #0f141c;
-            padding: 6px;
-            border: 1px solid #2b3648;
+            background: #0a0a0a;
+            border: 1px solid #222222;
             transition: transform 0.25s ease;
-        }
-
-        .gif-wrapper img:hover {
-            transform: scale(1.01);
-            box-shadow: 0 16px 56px rgba(124, 58, 237, 0.2);
         }
 
         .powered {
             text-align: center;
             font-size: 0.95rem;
-            color: #a0b3cc;
+            color: #e1a0ff;
             margin-top: 0.2rem;
             margin-bottom: 0.8rem;
         }
@@ -138,20 +137,21 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px 18px;
-            margin: 1.2rem 0 1.8rem 0;
+            gap: 5px 5px;
+            /* margin: 1.2rem 0 1.8rem 0; */
         }
 
         .badge {
-            background: #1f2937;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
+            background: #0a0a0a;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 12px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid #2f3b4b;
-            color: #d1dbe9;
+            font-weight: 400;
+            border: 1px solid #222222;
+            color: #ffde85;
             transition: 0.15s;
         }
 
@@ -174,14 +174,14 @@
 
         /* ===== DOWNLOAD ===== */
         .download-block {
-            background: #1b2533;
-            border-radius: 60px;
-            padding: 0.6rem 1.5rem;
+            background: #2e1200;
+            border-radius: 5px;
+            padding: 10px 10px 10px 18px;
             display: inline-flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             margin: 0.8rem 0 1.8rem 0;
-            border: 1px solid #334155;
+            border: 1px solid #964300;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
@@ -207,8 +207,8 @@
         .badge-small {
             background: #1e293b;
             padding: 0.2rem 0.8rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
+            border-radius: 5px;
+            /* font-size: 0.75rem; */
             border: 1px solid #334155;
             color: #b6c8e0;
         }
@@ -234,9 +234,9 @@
         /* ===== TABLE ===== */
         .table-wrap {
             overflow-x: auto;
-            background: #10171f;
-            border-radius: 20px;
-            border: 1px solid #26303e;
+            background: #0a0a0a;
+            border-radius: 5px;
+            border: 1px solid #964300;
         }
 
         table {
@@ -246,17 +246,17 @@
         }
 
         th {
-            background: #1b2533;
+            background: #2E1200;
             color: #bcc9de;
             font-weight: 500;
             text-align: left;
             padding: 0.9rem 1.2rem;
-            border-bottom: 1px solid #2e3a4a;
+            border-bottom: 1px solid #964300;
         }
 
         td {
-            padding: 0.9rem 1.2rem;
-            border-bottom: 1px solid #1f2a36;
+            padding: 5px 10px;
+            border-bottom: 1px solid #964300;
             color: #d3dceb;
         }
 
@@ -275,21 +275,23 @@
 
         /* ===== FEATURE GRID ===== */
         .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 12px 20px;
-            margin: 1.5rem 0 0.5rem 0;
-            background: #111a23;
-            padding: 1.5rem 1.8rem;
-            border-radius: 28px;
-            border: 1px solid #26303e;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: #0a0a0a;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #964300;
         }
 
         .feature-item {
+            background: #001b17;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.98rem;
+            border-radius: 3px;
+            padding: 5px;
+            font-size: 14px;
             color: #d2ddec;
         }
 
@@ -306,7 +308,7 @@
         /* ===== FOOTER ===== */
         hr {
             border: none;
-            border-top: 1px solid #26303e;
+            border-top: 1px solid #ff33c2;
             margin: 2rem 0 1rem 0;
         }
 
@@ -315,20 +317,20 @@
             justify-content: space-between;
             flex-wrap: wrap;
             align-items: center;
-            color: #7b8aa3;
+            color: #ff6fc8;
             font-size: 0.9rem;
         }
 
         .footer-note i {
-            color: #7c6b9e;
+            color: #fc98ff;
         }
 
         .footer-note a {
-            color: #9bb3d1;
+            color: #ff74d1;
             text-decoration: none;
         }
         .footer-note a:hover {
-            color: #c4d4ed;
+            color: #f49eff;
             text-decoration: underline;
         }
 
@@ -342,7 +344,7 @@
             }
             .feature-grid {
                 grid-template-columns: 1fr;
-                padding: 1.2rem;
+                padding: 5px;
             }
             .download-block {
                 flex-wrap: wrap;
@@ -381,7 +383,6 @@
     <!-- BADGES -->
     <div class="badge-group">
         <span class="badge win"><i class="fab fa-windows"></i> Windows 7/10/11</span>
-        <span class="badge status"><i class="fas fa-circle-check"></i> Active Maintained</span>
         <span class="badge version"><i class="fas fa-tag"></i> v2.5</span>
         <span class="badge"><i class="fas fa-code"></i> Open Core</span>
     </div>
@@ -398,12 +399,12 @@
     </div>
 
     <!-- DESCRIPTION -->
-    <p style="font-size: 1.02rem; color: #cbd8ec; margin-bottom: 0.2rem;">
+    <p style="font-size: 16px; color: #cbd8ec; margin-bottom: 0.2rem;">
         <i class="fas fa-rocket" style="color: #a78bfa; margin-right: 8px;"></i>
-        <strong>Ультимативный набор инструментов</strong> для обхода блокировок и снятия замедлений трафика, инициируемых РКН (Роскомнадзором).
+        <strong>Ультимативный набор инструментов</strong>
     </p>
-    <p style="color: #98aecb; margin-top: 0.2rem;">
-        Проект включает три мощные утилиты с единым интерфейсом для борьбы с цензурой, замедлением YouTube и другими видами ограничений в РФ. Работает на Windows 7/10/11.
+    <p style="font-size: 12px; color: #98aecb; margin-top: 0.2rem;">
+        для обхода блокировок и снятия замедлений трафика, инициируемых РКН (Роскомнадзором).
     </p>
 
     <!-- TABLE: instruments -->
@@ -416,15 +417,15 @@
             <tbody>
                 <tr>
                     <td class="tool-name" style="text-wrap-mode: nowrap;"><i class="fas fa-fire" style="color: #f97316; margin-right: 8px;"></i>Zapret DPI</td>
-                    <td class="tool-desc">Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. Есть встроенный редактор списков</td>
+                    <td class="tool-desc"style="font-size: 12px;">Борьба с DPI (Deep Packet Inspection). Снятие замедлений YouTube, Discord, Telegram и других сервисов. Есть встроенный редактор списков</td>
                 </tr>
                 <tr>
                     <td class="tool-name" style="text-wrap-mode: nowrap;"><i class="fas fa-shield" style="color: #3b82f6; margin-right: 8px;"></i>AdGuard Home</td>
-                    <td class="tool-desc">Сетевой фильтр рекламы, трекеров и блокировка вредоносных доменов на уровне DNS.</td>
+                    <td class="tool-desc" style="font-size: 12px;">Сетевой фильтр рекламы, трекеров и блокировка вредоносных доменов на уровне DNS.</td>
                 </tr>
                 <tr>
                     <td class="tool-name" style="text-wrap-mode: nowrap;"><i class="fas fa-network-wired" style="color: #8b5cf6; margin-right: 8px;"></i>TGWsProxy</td>
-                    <td class="tool-desc">Локальный прокси-сервер для стабильной работы Telegram Desktop при проблемах с подключением.</td>
+                    <td class="tool-desc" style="font-size: 12px;">Локальный прокси-сервер для стабильной работы Telegram Desktop при проблемах с подключением.</td>
                 </tr>
             </tbody>
         </table>
@@ -456,10 +457,6 @@
 
     <!-- extra workflow -->
     <div style="margin-top: 0.8rem; display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; font-size: 0.8rem; color: #5f7390;">
-        <span><i class="fas fa-circle-check" style="color: #4ade80;"></i> Windows 7+ </span>
-        <span><i class="fas fa-circle-check" style="color: #4ade80;"></i> x64 </span>
-        <span><i class="fas fa-circle-check" style="color: #4ade80;"></i> администратор </span>
-        <span><i class="fas fa-circle-check" style="color: #4ade80;"></i> WinDivert </span>
     </div>
 
 </div>
