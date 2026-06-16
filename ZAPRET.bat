@@ -20,6 +20,20 @@ if "%~1"=="load_user_lists" (
     exit /b
 )
 
+if "%~1"=="check_updates" (
+    if defined NO_UPDATE_CHECK exit /b
+
+    if exist "%~dp0ZAPRET\utils\check_updates.enabled" (
+        if not "%~2"=="soft" (
+            start /b "%~f0" check_updates soft
+        ) else (
+            call :service_check_updates soft
+        )
+    )
+
+    exit /b
+)
+
 :: МЕНЮ ================================
 setlocal EnableDelayedExpansion
 :menu
@@ -27,6 +41,8 @@ setlocal EnableDelayedExpansion
 cls
 call :ipset_switch_status
 call :game_switch_status
+call :check_updates_switch_status
+call :get_strategy_name
 
 set "menu_choice=null"
 
@@ -51,7 +67,7 @@ if %errorLevel% == 0 (
     tasklist /FI "IMAGENAME eq winws.exe" | find /I "winws.exe" > nul
     if !errorlevel! equ 0 (
         echo   [96mСервис: [92mУстановлен[0m
-        echo   [96mВыбрано: [93m!SELECT_SRV![0m
+        echo   [96mСтратегия: [93m!SELECT_SRV![0m
     ) else (
         echo   [96mСервис: [91mНе установлен[0m[90m
     )
@@ -68,14 +84,16 @@ if %errorLevel% == 0 (
 echo  [90m-----------------------------------------------------------------[0m
 echo    [93m1[90m. [92mУстановить службу[0m
 echo    [93m2[90m. [91mУдалить службы[0m
-echo    [93m3[90m. [95mКонфигуратор листа[0m      [90m[[93mlist-general.txt[90m][0m
+echo    [93m3[90m. [95mКонфигуратор[0m   [90m[[93mlist-general.txt[90m][0m
 echo    [93m4[90m. [96mПроверить статус[0m
-echo    [93m5[90m. [96mИгровой фильтр[0m          [90m[[93m!GameFilterStatus![90m][0m
-echo    [93m6[90m. [96mIPSet фильтр[0m            [90m[[93m!IPsetStatus![90m][0m
-echo    [93m7[90m. [96mОбновить список IPSet[0m
-echo    [93m8[90m. [96mОбновить файл hosts[0m
-echo    [93m9[90m. [96mЗапустить диагностику[0m
-echo   [93m10[90m. [96mЗапустить тесты[0m
+echo    [93m5[90m. [96mИгровой фильтр[0m [90m[[93m!GameFilterStatus![90m][0m
+echo    [93m6[90m. [96mIPSet фильтр[0m   [90m[[93m!IPsetStatus![90m][0m
+echo    [93m8[90m. [96mОбновить список IPSet[0m
+echo    [93m9[90m. [96mОбновить файл hosts[0m
+echo   [93m10[90m. [96mПроверить обновления[0m
+echo   [93m11[90m. [96mЗапустить диагностику[0m
+echo   [93m12[90m. [96mЗапустить тесты[0m
+@REM echo    [93m7[90m. [96mАвто-проверка обновлений[0m  [90m[[93m!CheckUpdatesStatus![90m][0m
 echo  [90m=================================================================[0m
 set /p menu_choice=[96m  Выбор: [93m
 
@@ -88,8 +106,10 @@ if "%menu_choice%"=="5" goto game_switch
 if "%menu_choice%"=="6" goto ipset_switch
 if "%menu_choice%"=="7" goto ipset_update
 if "%menu_choice%"=="8" goto hosts_update
-if "%menu_choice%"=="9" goto service_diagnostics
-if "%menu_choice%"=="10" goto run_tests
+if "%menu_choice%"=="9" goto service_check_updates
+if "%menu_choice%"=="10" goto service_diagnostics
+if "%menu_choice%"=="11" goto run_tests
+@REM if "%menu_choice%"=="12" goto check_updates_switch
 goto menu
 
 :: ВКЛЮЧЕНИЕ TCP ==========================
@@ -105,14 +125,14 @@ if not exist "%LISTS_PATH%ipset-exclude-user.txt" (
     echo 203.0.113.113/32>"%LISTS_PATH%ipset-exclude-user.txt"
 )
 if not exist "%LISTS_PATH%list-general-user.txt" (
-    echo domain.example.abc>"%LISTS_PATH%list-general-user.txt"
+    echo # Never leave this file empty>"%LISTS_PATH%list-general-user.txt"
+    echo domain.example.abc>>"%LISTS_PATH%list-general-user.txt"
 )
 if not exist "%LISTS_PATH%list-exclude-user.txt" (
     echo domain.example.abc>"%LISTS_PATH%list-exclude-user.txt"
 )
 
 exit /b
-
 
 :: СТАТУС ==============================
 :service_status
@@ -168,7 +188,6 @@ if "%ServiceStatus%"=="RUNNING" (
 
 exit /b
 
-
 :: УДАЛЕНИЕ ==============================
 :service_remove
 @REM mode con cols=69 lines=15
@@ -205,7 +224,6 @@ sc delete "WinDivert14" >nul 2>&1
 echo  [90m=================================================== [93mНажмите [94mENTER[0m
 pause > nul
 goto menu
-
 
 :: УСТАНОВКА =============================
 :service_install
@@ -354,6 +372,78 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
+:: ПРОВЕРКА ОБНОВЛЕНИЙ =======================
+:service_check_updates
+chcp 437 > nul
+cls
+
+:: Set current version and URLs
+set "GITHUB_VERSION_URL=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/main/.service/version.txt"
+set "GITHUB_RELEASE_URL=https://github.com/Flowseal/zapret-discord-youtube/releases/tag/"
+set "GITHUB_DOWNLOAD_URL=https://github.com/Flowseal/zapret-discord-youtube/releases/latest"
+
+echo  [90m=========================================== [94mПроверка обновлений [90m====[0m
+
+:: Get the latest version from GitHub
+for /f "delims=" %%A in ('powershell -NoProfile -Command "(Invoke-WebRequest -Uri \"%GITHUB_VERSION_URL%\" -Headers @{\"Cache-Control\"=\"no-cache\"} -UseBasicParsing -TimeoutSec 5).Content.Trim()" 2^>nul') do set "GITHUB_VERSION=%%A"
+
+:: Error handling
+if not defined GITHUB_VERSION (
+    echo   [93m[!] Предупреждение: не удалось получить последнюю версию. Это предупреждение не влияет на работу zapret[0m
+    timeout /T 9 >nul
+    if "%1"=="soft" exit 
+    goto menu
+)
+
+:: Version comparison
+if "%LOCAL_VERSION%"=="%GITHUB_VERSION%" (
+    echo   [92m[+] Установлена последняя версия: %LOCAL_VERSION%[0m
+    
+    if "%1"=="soft" exit 
+    pause
+    goto menu
+) 
+
+echo   [93m[!] Доступна новая версия: %GITHUB_VERSION%[0m
+echo   [96m[+] Страница релиза: %GITHUB_RELEASE_URL%%GITHUB_VERSION%[0m
+
+echo   [93m[*] Открытие страницы загрузки...[0m
+start "" "%GITHUB_DOWNLOAD_URL%"
+
+if "%1"=="soft" exit 
+pause
+goto menu
+
+:: ПЕРЕКЛЮЧАТЕЛЬ ПРОВЕРКИ ОБНОВЛЕНИЙ =================
+:check_updates_switch_status
+set "checkUpdatesFlag=%~dp0ZAPRET\utils\check_updates.enabled"
+
+if exist "%checkUpdatesFlag%" (
+    set "CheckUpdatesStatus=Включен"
+) else (
+    set "CheckUpdatesStatus=Отключен"
+)
+exit /b
+
+:check_updates_switch
+cls
+echo  [90m=========================================== [94mАвто-проверка обновлений [90m====[0m
+
+set "checkUpdatesFlag=%~dp0ZAPRET\utils\check_updates.enabled"
+
+if not exist "%checkUpdatesFlag%" (
+    echo   [93m[*] Включение авто-проверки обновлений...[0m
+    echo ENABLED > "%checkUpdatesFlag%"
+    echo   [92m[+] Авто-проверка обновлений включена[0m
+) else (
+    echo   [93m[*] Отключение авто-проверки обновлений...[0m
+    del /f /q "%checkUpdatesFlag%" >nul 2>&1
+    echo   [92m[+] Авто-проверка обновлений отключена[0m
+)
+
+echo  [90m=================================================== [93mНажмите [94mENTER[0m
+pause > nul
+goto menu
 
 :: ДИАГНОСТИКА =========================
 :service_diagnostics
@@ -657,7 +747,6 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
-
 :: ИГРОВОЙ ПЕРЕКЛЮЧАТЕЛЬ ========================
 :game_switch_status
 
@@ -693,7 +782,6 @@ if /i "%GameFilterMode%"=="all" (
     set "GameFilterUDP=1024-65535"
 )
 exit /b
-
 
 :game_switch
 @REM mode con cols=69 lines=20
@@ -735,8 +823,6 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
-
-
 :: ПЕРЕКЛЮЧАТЕЛЬ IPSET =======================
 :ipset_switch_status
 
@@ -759,7 +845,6 @@ if !lineCount!==0 (
     )
 )
 exit /b
-
 
 :ipset_switch
 @REM mode con cols=69 lines=15
@@ -810,7 +895,6 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
-
 :: ОБНОВЛЕНИЕ IPSET =======================
 :ipset_update
 @REM mode con cols=69 lines=15
@@ -818,7 +902,7 @@ cls
 echo  [90m=================================================== [94mОбновление списка IPSet [90m====[0m
 
 set "listFile=%~dp0ZAPRET\lists\ipset-all.txt"
-set "url=https://raw.githubusercontent.com/kelixme/KensoDPI-Bypass/refs/heads/main/.service/ipset-service.txt"
+set "url=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/ipset-service.txt"
 
 echo   [93m[*] Обновление ipset-all...[0m
 
@@ -844,7 +928,6 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
-
 :: ОБНОВЛЕНИЕ ФАЙЛА HOSTS =======================
 :hosts_update
 @REM mode con cols=69 lines=20
@@ -852,7 +935,7 @@ cls
 echo  [90m=================================================== [94mОбновление файла hosts [90m====[0m
 
 set "hostsFile=%SystemRoot%\System32\drivers\etc\hosts"
-set "hostsUrl=https://raw.githubusercontent.com/kelixme/KensoDPI-Bypass/refs/heads/main/.service/hosts"
+set "hostsUrl=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts"
 set "tempFile=%TEMP%\zapret_hosts.txt"
 set "needsUpdate=0"
 
@@ -912,7 +995,6 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
-
 :: ЗАПУСК ТЕСТОВ =============================
 :run_tests
 @REM mode con cols=69 lines=15
@@ -935,6 +1017,11 @@ echo  [90m=================================================== [93mНажмите [94
 pause > nul
 goto menu
 
+:: ПОЛУЧИТЬ ИМЯ СТРАТЕГИИ =============================
+:get_strategy_name
+set "CurrentStrategy="
+for /f "tokens=2*" %%A in ('reg query "HKLM\System\CurrentControlSet\Services\zapret" /v zapret-discord-youtube 2^>nul') do set "CurrentStrategy=Стратегия: %%B"
+exit /b
 
 :: Вспомогательные функции
 
@@ -972,8 +1059,7 @@ if "%extracted%"=="0" (
 )
 exit /b 0
 
-
-:: ИНТЕГРИРОВАННЫЙ РЕДАКТОР СПИСКОВ (Пункт 11) =============
+:: ИНТЕГРИРОВАННЫЙ РЕДАКТОР СПИСКОВ (Пункт 3) =============
 
 :list_editor_init
 set "EDITOR_VERSION=v1.3"
