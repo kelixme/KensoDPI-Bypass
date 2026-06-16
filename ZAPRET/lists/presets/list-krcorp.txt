@@ -6,3 +6,6 @@ hammerandchisel.zendesk.com
 zendesk.com
 *.microsoft.com
 microsoft.com
+fatality.win
+forum.neverlose.cc
+neverlose.cc
