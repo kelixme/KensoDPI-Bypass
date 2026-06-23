@@ -1,5 +1,5 @@
 @echo off
-set LOCAL_VERSION=v2.5 BETA
+set LOCAL_VERSION=v2.6b BETA
 set SRVCDESC=Zapret.Bypass - %LOCAL_VERSION%
 title %SRVCDESC%
 
@@ -88,12 +88,10 @@ echo    [93m3[90m. [95mКонфигуратор[0m   [90m[[93mlist-general.txt[90m][
 echo    [93m4[90m. [96mПроверить статус[0m
 echo    [93m5[90m. [96mИгровой фильтр[0m [90m[[93m!GameFilterStatus![90m][0m
 echo    [93m6[90m. [96mIPSet фильтр[0m   [90m[[93m!IPsetStatus![90m][0m
-echo    [93m8[90m. [96mОбновить список IPSet[0m
-echo    [93m9[90m. [96mОбновить файл hosts[0m
-echo   [93m10[90m. [96mПроверить обновления[0m
-echo   [93m11[90m. [96mЗапустить диагностику[0m
-echo   [93m12[90m. [96mЗапустить тесты[0m
-@REM echo    [93m7[90m. [96mАвто-проверка обновлений[0m  [90m[[93m!CheckUpdatesStatus![90m][0m
+echo    [93m7[90m. [96mОбновить список IPSet[0m
+echo    [93m8[90m. [96mОбновить файл hosts[0m
+echo    [93m9[90m. [96mЗапустить диагностику[0m
+echo   [93m10[90m. [96mЗапустить тесты[0m
 echo  [90m=================================================================[0m
 set /p menu_choice=[96m  Выбор: [93m
 
@@ -106,10 +104,8 @@ if "%menu_choice%"=="5" goto game_switch
 if "%menu_choice%"=="6" goto ipset_switch
 if "%menu_choice%"=="7" goto ipset_update
 if "%menu_choice%"=="8" goto hosts_update
-if "%menu_choice%"=="9" goto service_check_updates
-if "%menu_choice%"=="10" goto service_diagnostics
-if "%menu_choice%"=="11" goto run_tests
-@REM if "%menu_choice%"=="12" goto check_updates_switch
+if "%menu_choice%"=="9" goto service_diagnostics
+if "%menu_choice%"=="10" goto run_tests
 goto menu
 
 :: ВКЛЮЧЕНИЕ TCP ==========================
@@ -236,29 +232,97 @@ cd /d "%~dp0ZAPRET\"
 set "BIN_PATH=%~dp0ZAPRET\bin\"
 set "LISTS_PATH=%~dp0ZAPRET\lists\"
 echo   [95mВыберите один из вариантов:[0m
+echo  [90m-----------------------------------------------------------------[0m
+
+:: Сбор списка файлов .bat (исключая service*.bat)
 set "count=0"
 for /f "delims=" %%F in ('powershell -NoProfile -Command "Get-ChildItem -LiteralPath '.' -Filter '*.bat' | Where-Object { $_.Name -notlike 'service*' } | Sort-Object { [Regex]::Replace($_.Name, '(\d+)', { $args[0].Value.PadLeft(8, '0') }) } | ForEach-Object { $_.BaseName }"') do (
     set /a count+=1
-    echo   [93m!count![90m.[0m [96m%%F[0m
     set "file!count!=%%F.bat"
+    set "name!count!=%%F"
 )
+
+:: Отображение в столбцы (по 20 строк в столбце)
+set "rows=20"
+set /a "cols=(count + rows - 1) / rows"
+if %cols% lss 1 set "cols=1"
+
+:: Вычисляем максимальную длину имени для КАЖДОГО столбца
+for /l %%c in (1,1,%cols%) do (
+    set "max_len_%%c=0"
+    for /l %%r in (1,1,%rows%) do (
+        set /a "idx=%%r + (%%c - 1) * rows"
+        if !idx! leq !count! (
+            call set "fname=%%name!idx!%%"
+            call :strlen fname
+            if !len! gtr !max_len_%%c! set "max_len_%%c=!len!"
+        )
+    )
+)
+
+for /l %%r in (1,1,%rows%) do (
+    set "line="
+    for /l %%c in (1,1,%cols%) do (
+        set /a "idx=%%r + (%%c - 1) * rows"
+        if !idx! leq !count! (
+            set "num=!idx!"
+            if !num! lss 10 (set "num= !num!") else (set "num=!num!")
+            
+            :: Получаем имя файла
+            call set "fname=%%name!idx!%%"
+            
+            :: Получаем максимальную длину для этого столбца
+            call set "max_len=%%max_len_%%c%%"
+            
+            :: Вычисляем отступ для выравнивания
+            call :strlen fname
+            set /a "pad_len=max_len - len"
+            
+            set "spaces="
+            for /l %%p in (1,1,!pad_len!) do set "spaces=!spaces! "
+            
+            :: Добавляем в строку с двумя пробелами между столбцами
+            if "!line!"=="" (
+                set "line=  [93m!num![90m.[0m [96m!fname!!spaces![0m"
+            ) else (
+                set "line=!line!  [93m!num![90m.[0m [96m!fname!!spaces![0m"
+            )
+        )
+    )
+    echo !line!
+)
+
+echo  [90m-----------------------------------------------------------------[0m
 
 :: Выбор файла
 set "choice="
-@REM echo.
-echo  [90m=================================================================[0m
 set /p "choice=[96m  Введите номер файла: [93m"
 if "!choice!"=="" (
-    echo   [91m[!] Неверный выбор, выход...[0m
-    pause
+    @REM echo   [91mНеверный выбор, выход...[0m
+    @REM pause
     goto menu
+)
+
+:: Проверяем, что choice - это число
+echo !choice! | findstr /R "^[0-9][0-9]*$" >nul
+if errorlevel 1 (
+    echo   [91mВведите корректный номер![0m
+    pause
+    goto service_install
+)
+
+:: Проверяем, что номер не превышает количество файлов
+if !choice! gtr !count! (
+    echo   [91mНомер превышает количество доступных файлов (!count!)[0m
+    pause
+    goto service_install
 )
 
 set "selectedFile=!file%choice%!"
 if not defined selectedFile (
-    echo   [91m[!] Неверный выбор, выход...[0m
+    echo   [91mФайл с номером !choice! не найден[0m
     pause
-    goto menu
+    goto service_install
 )
 
 :: Аргументы, за которыми должно следовать значение
@@ -371,6 +435,19 @@ echo   [92m[+] Служба успешно установлена![0m
 echo  [90m=================================================== [93mНажмите [94mENTER[0m
 pause > nul
 goto menu
+
+:: Функция для подсчёта длины строки
+:strlen
+set "len=0"
+if "!%1!"=="" goto :eof
+set "temp_str=!%1!"
+:strlen_loop
+if not "!temp_str!"=="" (
+    set "temp_str=!temp_str:~1!"
+    set /a len+=1
+    goto strlen_loop
+)
+goto :eof
 
 :: ПРОВЕРКА ОБНОВЛЕНИЙ =======================
 :service_check_updates
@@ -824,6 +901,7 @@ pause > nul
 goto menu
 
 :: ПЕРЕКЛЮЧАТЕЛЬ IPSET =======================
+:: ПЕРЕКЛЮЧАТЕЛЬ IPSET =======================
 :ipset_switch_status
 
 set "listFile=%~dp0ZAPRET\lists\ipset-all.txt"
@@ -1137,7 +1215,7 @@ for /l %%i in (1,1,!empty_lines!) do echo.
 echo  [90m----------------------------------------------------------------------[0m
 echo                   [93m[[96m^< [0mПред.[93m] [90mСтраница: !current_page!/!total_pages! [93m[[96m^> [0mСлед.[93m]
 echo  [90m======================================================================[0m
-echo   [93m[[96mA [0mВыбрать все[93m] [93m[[96mN [0mСнять все[93m] [93m[[96mS [0mСохранить[93m] [93m[[96mR [0mОбновить[93m] [93m[[96mQ [0mВыход[93m]
+echo   [93m[[96mA [0mВыбрать все[93m] [93m[[96mN [0mСнять все[93m] [93m[[96mS [0mСохранить[93m] [93m[[96mR [0mОбновить[93m] [93m[[96mESC [0mВыход[93m]
 echo  [90m======================================================================[0m
 
 set "key="
@@ -1214,6 +1292,7 @@ if "%key%"=="83" goto save_and_merge
 if "%key%"=="115" goto save_and_merge
 if "%key%"=="82" goto refresh_list
 if "%key%"=="114" goto refresh_list
+if "%key%"=="27" goto menu
 if "%key%"=="81" goto menu
 if "%key%"=="113" goto menu
 goto editor_menu
